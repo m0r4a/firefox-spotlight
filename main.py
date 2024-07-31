@@ -6,12 +6,22 @@ import sys
 new_tab = False
 
 
-def load_config(config_file='idk_name.json'):
-    with open(config_file, 'r') as file:
-        return json.load(file)
+def load_config():
+    try:
+        with open("local_shortcuts.json", 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        sys.exit(
+            "No config file found. Please create a local_shortcuts.json file."
+        )
 
 
-def main(query):
+def main():
+    if len(sys.argv) > 1:
+        query = ' '.join(sys.argv[1:])
+    else:
+        sys.exit("Please provide a search query.")
+
     config = load_config()
     shortcuts = config.get('shortcuts', {})
     search_engines = config.get('search_engines', {})
@@ -35,8 +45,4 @@ def main(query):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        query = ' '.join(sys.argv[1:])
-        main(query)
-    else:
-        print("Please provide a search query.")
+    main()
