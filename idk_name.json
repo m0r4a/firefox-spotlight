@@ -1,0 +1,11 @@
+{
+    "shortcuts": {
+        "gh": "https://github.com",
+        "yt": "https://www.youtube.com"
+    },
+    "search_engines": {
+        "d": "https://devdocs.io/#q=",
+        "y": "https://www.youtube.com/results?search_query="
+    },
+    "default_search_engine": "https://duckduckgo.com/?q="
+}
